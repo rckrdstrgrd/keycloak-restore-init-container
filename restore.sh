@@ -29,7 +29,13 @@ fi
 
 FETCH_DIR=$(mktemp -d)
 gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-gsutil cp gs://$GCS_BUCKET/$GCS_BUCKET_PATH/$FILE_NAME $FETCH_DIR
+local GCS_PATH
+if [ "$GCS_BUCKET_PATH" = "" ]; then
+  GCS_PATH=gs://$GCS_BUCKET/$FILE_NAME
+else
+  GCS_PATH=gs://$GCS_BUCKET/$GCS_BUCKET_PATH/$FILE_NAME
+fi
+gsutil cp $GCS_PATH $FETCH_DIR
 tar -zxf $FETCH_DIR/$FILE_NAME -C $RESTORE_SRC_DIR --strip-components=1
 rm -rf $FETCH_DIR
 echo "Backup $FILE_NAME is now is available in $RESTORE_SRC_DIR"
