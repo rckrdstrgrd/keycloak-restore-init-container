@@ -29,7 +29,6 @@ fi
 
 FETCH_DIR=$(mktemp -d)
 gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-local GCS_PATH
 if [ "$GCS_BUCKET_PATH" = "" ]; then
   GCS_PATH=gs://$GCS_BUCKET/$FILE_NAME
 else
