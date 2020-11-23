@@ -1,5 +1,5 @@
-# keycloak-restore-init-container
+# restore-gcp-init-container
 
-k8s init container for restoring keycloak from an export
+Fetch from GCS and copy to volume
 
-Docker image: `rckrdstrgrd/keycloak-restore-init-container`
+Docker image: `rckrdstrgrd/restore-gcp-init-container`
