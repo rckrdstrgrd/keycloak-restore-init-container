@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:alpine
 
-RUN apk --update add tar redis-tools
+RUN apk --update add tar redis
 
 COPY restore.sh ./
 
